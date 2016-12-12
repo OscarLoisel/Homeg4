@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Homeg4r</title>
+	<title>Homeg4</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="style/style.css">
 </head>
