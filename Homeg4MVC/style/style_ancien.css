@@ -1,0 +1,226 @@
+body {
+	font-family: Arial, sans-serif;
+}
+
+.page {
+	width: 100%;
+	margin: auto;
+}
+
+/* HEADER */
+
+header {
+	display: flex;
+}
+
+.logo {
+	display: flex;
+	margin-left: 0.5em;
+	margin-bottom: 0.7em;
+}
+
+.logo img{
+	padding-top: 1em;
+}
+
+nav {
+	display: flex;
+}
+
+nav ul {
+	list-style-type: none;
+	display: flex;
+	width: 50em;
+	margin-left: 5em;
+	margin-right: 10em;
+	padding: 10px;
+	border-radius: 20px;
+	background-color: #30ABDD;
+}
+
+nav a {
+	border: 2px solid black;
+	border-radius: 20px;
+	text-align: center;
+	width: 50%;
+	margin: 1em;
+	padding: 1.5em;
+	background-color: white;
+	color: black;
+	text-decoration: none;
+}
+
+/*SECTION */
+
+#home {
+	display: flex;
+	border:2px solid blue; /* BLEU */
+	width: 1100px;
+	height: auto;
+}
+
+section: nth-child(2) {
+	display: flex;
+	flex-direction: column;
+}
+
+/* ASIDE/TABLEAU DE BORD */
+
+aside {
+	border: 2px solid pink;
+
+}
+
+#tdb {
+	width: 16.1em;
+	height: 10em;
+	border: 2px solid green; /* VERT */
+
+}
+
+table td {
+	text-align: center;
+}
+
+#tableau_tdb {
+	border: 2px solid black;
+	border-radius: 20px;
+	background-color: grey;
+}
+
+.critere {
+	padding: 1.5em;
+}
+
+/* MENU CAPTEURS */
+
+#menu_capteurs {
+	border: 2px solid yellow; /*JAUNE */
+	width: 16.1em;
+	height: 16em;
+	float: bottom left;
+}
+
+#liste_capteurs {
+	width: 16.1em;
+	border-radius: 20px;
+	margin-top: 3em;
+	border: 2px solid black;
+	background-color: #30ABDD;
+}
+
+#liste_capteurs ul {
+	list-style-type: none;
+	
+}
+
+#liste_capteurs li, #menu_inscription li{
+	border: 2px solid black;
+	border-collapse: collapse;
+	border-radius: 20px;
+	text-align: center;
+	margin-bottom: 1em;
+	color: black;
+	background-color: white;
+	position: relative;
+	right:10%;	
+}
+
+
+#liste_capteurs a {
+	text-decoration: none;
+}
+
+/* GRILLE DES PIÉCES */
+
+#grille_pieces {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-wrap: wrap;
+	border:2px solid red; /* ROUGE */
+	margin-right:2em;
+	margin-left:2em;
+	width: 50em;	
+}
+
+#grille_pieces a {
+	text-decoration: none;
+	border: 2px solid black;
+	border-radius: 20px;
+	padding: 2em;
+	padding-left: 3em;
+	padding-right: 3em;
+	margin: 0.5em;
+	margin-right: 2em;
+	margin-left: 2em;
+	height: 5em;
+	text-align: center;
+	color: black;
+}
+
+/* FOTMULAIRE INSCRIPTION */
+
+#menu_inscription ul, #menu_connexion ul, #menu_parametrage ul {
+	list-style-type: none;
+	display: flex;
+	width: 50em;
+	margin-left: 5em;
+	margin-right: 5em;
+	padding: 10px;
+	border-radius: 20px;
+	background-color: #30ABDD;
+}
+
+#menu_inscription li, #menu_connexion li, #menu_parametrage li {
+	border: 2px solid black;
+	border-radius: 20px;
+	text-align: center;
+	width: 50%;
+	margin: 0 auto;
+	padding: 1.5em;
+	background-color: white;
+	color: black;
+	text-decoration: none;
+
+}
+
+#tableau_inscription, #tableau_connexion {
+	border: 2px solid black;
+	border-radius: 20px;
+	position: absolute;
+	padding: 1.5em;
+	margin-left: auto;
+	margin-right: auto;
+
+}
+
+#tableau_inscription td, #tableau_connexion td {
+	text-align: right;
+}
+
+#connexion {
+	display: flex;
+	justify-content: center;
+	position: relative;
+	right: 10%;
+}
+
+#inscription {
+	display: flex;
+	justify-content: center;
+	position: relative;
+	right: 20%;
+}
+
+#msg_erreur {
+	text-align: center;
+}
+
+/* PAGE DE PARAMÉTRAGE DES PIÉCES */
+
+
+
+/* FORMULAIRE DE DONNEXION */
+
+

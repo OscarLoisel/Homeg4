@@ -1,0 +1,358 @@
+body {
+	font-family: Arial, sans-serif;
+	margin : auto;
+	width : 80%;
+
+}
+
+.page {
+	width: 100%;
+	margin: auto;
+}
+
+/* HEADER */
+
+header {
+	display: flex;
+
+}
+
+.logo {
+	display: flex;
+	margin-left: 0.5em;
+	margin-bottom: 0.7em;
+}
+
+.logo img{
+	padding-top: 1em;
+}
+
+nav {
+	display: flex;
+}
+/*
+nav ul {
+	list-style-type: none;
+	display: flex;
+	width: 50em;
+	margin-left: 5em;
+	margin-right: 10em;
+	padding: 10px;
+	border-radius: 20px;
+	background-color: #30ABDD;
+}
+
+nav a {
+	border: 2px solid black;
+	border-radius: 20px;
+	text-align: center;
+	width: 50%;
+	margin: 1em;
+	padding: 1.5em;
+	background-color: white;
+	color: black;
+	text-decoration: none;
+}*/
+
+/*SECTION */
+
+#home {
+	display: flex;
+	border:2px solid blue; /* BLEU */
+	width: 1100px;
+	height: auto;
+}
+
+section: nth-child(2) {
+	display: flex;
+	flex-direction: column;
+}
+
+/* ASIDE/TABLEAU DE BORD */
+
+aside {
+	border: 2px solid pink;
+
+}
+
+#tdb {
+	width: 16.1em;
+	height: 10em;
+	border: 2px solid green; /* VERT */
+
+}
+
+table td {
+	text-align: center;
+}
+
+#tableau_tdb {
+	border: 2px solid black;
+	border-radius: 20px;
+	background-color: grey;
+}
+
+.critere {
+	padding: 1.5em;
+}
+
+/* MENU CAPTEURS */
+
+#menu_capteurs {
+	border: 2px solid yellow; /*JAUNE */
+	width: 16.1em;
+	height: 16em;
+	float: bottom left;
+}
+
+#liste_capteurs {
+	width: 16.1em;
+	border-radius: 20px;
+	margin-top: 3em;
+	border: 2px solid black;
+	background-color: #427396;
+}
+
+#liste_capteurs ul {
+	list-style-type: none;
+	
+}
+
+#liste_capteurs li, #menu_inscription li{
+	border: 2px solid black;
+	border-collapse: collapse;
+	border-radius: 20px;
+	text-align: center;
+	margin-bottom: 1em;
+	color: black;
+	background-color: white;
+	position: relative;
+	right:10%;	
+}
+
+
+#liste_capteurs a {
+	text-decoration: none;
+}
+
+/* GRILLE DES PIÉCES */
+
+#grille_pieces { /* */
+	display: flex;
+	justify-content:center;
+	align-items: center;/* */
+	flex-wrap: wrap;
+	word-wrap : break-word;
+	border:2px solid red; /* ROUGE */
+	margin-right:2em;
+	margin-left:2em;
+	width: 50em;
+
+}
+
+#grille_pieces a {/* */
+	text-decoration: none;
+	border: 2px solid black;
+	border-radius: 20px;
+	padding-left:2.5em;/* */
+	padding-right: 2.5em;/* */
+	margin-right : 1em;/* */
+	margin-left:1em;/* */
+	height: 8em;
+	text-align: center;
+	color: black;
+	width : 7em;
+	display : flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* FORMULAIRE INSCRIPTION */
+
+#menu_inscription ul, #menu_connexion ul, #menu_parametrage ul, #menu_editionprofil ul {
+	list-style-type: none;
+	display: flex;
+	width: 50em;
+	margin-left: 5em;
+	margin-right: 10em;
+	padding: 10px;
+	border-radius: 20px;
+	background-color: #30ABDD;
+	border : 2px solid black
+}
+
+#menu_inscription li, #menu_connexion li, #menu_parametrage li, #menu_editionprofil li {
+	border: 2px solid black;
+	border-radius: 20px;
+	text-align: center;
+	width: 50%;
+	margin: 0 auto;
+	padding: 1.5em;
+	background-color: white;
+	color: black;
+	text-decoration: none;
+
+}
+
+#tableau_inscription,  #tableau_connexion {
+	border: 2px solid black;
+	border-radius: 20px;
+	position: absolute;
+	padding: 1.5em;
+	margin-left: auto;
+	margin-right: auto;
+
+}
+
+#tableau_inscription td, #tableau_connexion td {
+	text-align: right;
+}
+
+#connexion {
+	display: flex;
+	justify-content: center;
+	position: relative;
+	right: 10%;
+}
+
+#inscription {
+	display: flex;
+	justify-content: center;
+	position: relative;
+	right: 20%;
+}
+
+#msg_erreur {
+	text-align: center;
+}
+
+/* PAGE DE PARAMÉTRAGE DES PIÉCES */
+
+/*#menu_parametrage li {
+	border: 2px solid black;
+	border-radius: 20px;
+	text-align: center;
+	width: 50%;
+	margin: 0 auto;
+	padding: 1.5em;
+	background-color: white;
+	color: black;
+	text-decoration: none;
+}*/
+
+
+#menu-accordeon{
+	position : relative;
+	top : 28%;
+	justify-content: space-around;
+	margin-left : 50px;
+	width : 200%;
+	height : 27%;
+	/*border : 2px solid black;*/
+}
+#menu-accordeon, #menu-accordeon ul{
+padding:0;
+list-style:none;
+text-align:center;
+}
+
+
+#menu-accordeon li{
+display : inline-block;
+position:relative;
+margin-left : 25px;
+margin-left : 25px;
+/*border-radius:8px 8px 0 0;*/
+}
+
+#menu-accordeon ul li{
+/*display:inherit;*/
+position : relative;
+left : -25px;
+width : 100%;
+border-radius:0;
+}
+#menu-accordeon ul li:hover{
+border-radius:0;
+}
+#menu-accordeon ul li:last-child{
+border-radius:0 0 8px 8px;
+}
+#menu-accordeon ul{
+position:absolute;
+z-index: 1000;
+max-height:0;
+left: 0;
+right: 0;
+overflow:hidden;
+-moz-transition: .8s all .3s;
+-webkit-transition: .8s all .3s;
+transition: .8s all .3s;
+}
+#menu-accordeon li:hover ul{
+max-height:15em;
+}
+/* background des liens menus */
+#menu-accordeon li{
+background-color: #729EBF;
+background-image: -webkit-linear-gradient(top, #427396 0%, #30ABDD 100%);
+background-image:linear-gradient(to bottom, #427396 0%, #30ABDD 100%);
+}
+/* background des liens sous menus */
+#menu-accordeon li li{
+background:#333A40;
+}
+/* background des liens menus et sous menus au survol */
+#menu-accordeon li:hover{
+background:#30ABDD;
+}
+
+#menu-accordeon li li:hover{
+ 	background: #999;
+ }
+
+/* les a href */
+#menu-accordeon a{
+text-decoration:none;
+display:block;
+padding:8px 32px;
+color:#fff;
+font-family:arial;
+}
+#menu-accordeon ul a{
+padding:8px 0;
+}
+#menu-accordeon li:hover li a{
+color:#fff;
+}
+#menu-accordeon li:hover a, #menu-accordeon li li:hover a{
+color:#000;
+}
+
+/* NEWS LETTER */
+
+.news {
+	border: 2px solid black;
+	border-radius: 30px;
+	background-color: SkyBlue;
+	text-align: justify;
+}
+
+/* S.A.V */
+
+#sav {
+	border: 2px solid black;
+	border-radius: 30px;
+	background-color: #30ABDD;
+	text-align: justify;
+}
+
+.test{
+	background-color: #427396;
+}
+
+.test_2{
+
+	background-color: #999;
+
+}
