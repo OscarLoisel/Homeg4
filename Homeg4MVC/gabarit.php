@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="../style/style.css">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="style/style.css">
+	<link rel="stylesheet" type="text/css" href="style/style_grille_pieces.css">
+	<link rel="stylesheet" type="text/css" href="style/style_liste_capteurs.css">
 	<title>
-		<?php echo ($titre); ?>
+		Homeg4
 	</title>
 </head>
 	<body>
@@ -12,22 +14,17 @@
 			<?php echo($entete);?>
 		</div>
 
-		<hr>
-
 		<div id="corps">
-			<div id="aside">
+			<aside>
 				<?php echo($aside); ?>
-			</div>
+			</aside>
 			<div id="contenu">
 				<?php echo($contenu); ?>
 			</div>	
 		</div>
-
-		<hr>
-
+	
 		<div id="pied">
 			<?php echo ($pied); ?>
 		</div>
-
 	</body>
 </html>

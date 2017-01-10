@@ -1,13 +1,10 @@
-<?php
-ini_set('display_errors', 'On');
+<?php 
     session_start();
-
     require("modele/connexion_base.php"); 
     require("vue/commun.php");
+    require("modele/para_capteurs.php");
     include("modele/insertpiece.php");
     include("modele/insertcapteur.php");
-    include("modele/inscription.php");
-    require("modele/para_capteurs.php");
     if(!isset($_SESSION["id"]))
         { // L'utilisateur n'est pas connecté
         include("controleur/connexion.php");
@@ -21,123 +18,10 @@ ini_set('display_errors', 'On');
 
         //if (isset($_SESSION['id']) AND $userinfo['id'] == $_SESSION['id'])
 
-        //{
-
-    if (isset($_POST['forminscription'])) 
-    {
-        $nom = htmlspecialchars($_POST['nom']);
-        $prenom = htmlspecialchars($_POST['prenom']);
-        $identifiant = htmlspecialchars($_POST['identifiant']);
-        $mail = htmlspecialchars($_POST['mail']);
-        $mail2 = htmlspecialchars($_POST['mail2']);
-        $tel1 = htmlspecialchars($_POST['tel1']);
-        $tel2 = htmlspecialchars($_POST['tel2']);
-        $n_rue = htmlspecialchars($_POST['n_rue']);
-        $rue = htmlspecialchars($_POST['rue']);
-        $ville = htmlspecialchars($_POST['ville']);
-        $code_postal = htmlspecialchars($_POST['code_postal']);
-        $mdp = sha1($_POST['mdp']);
-        $mdp2 = sha1($_POST['mdp2']); // 13 variables
-        
-        if (!empty($_POST['nom']) AND !empty($_POST['prenom']) AND !empty($_POST['identifiant']) AND !empty($_POST['mail']) AND !empty($_POST['mail2']) AND !empty($_POST['tel1']) AND !empty($_POST['n_rue']) AND !empty($_POST['rue']) AND !empty($_POST['ville']) AND !empty($_POST['code_postal']) AND !empty($_POST['mdp']) AND !empty($_POST['mdp2'])) 
-        {
-        $nomlength = strlen($nom);
-        if ($nomlength <= 255)
-        {
-        $prenomlength = strlen($prenom);
-        if ($prenomlength <= 255)
-        {
-        $reponse = reqidentifiant($bdd, $identifiant);
-        $identifiantexist = $reponse-> rowCount(); 
-        if ($identifiantexist == 0)
-        {
-        $identifiantlength = strlen($identifiant);
-        if ($identifiantlength <= 255)
-        {
-        if ($mail == $mail2) 
-        {
-        $tel1length = strlen($tel1);
-        if($tel1length <= 12)
-        {
-        $tel2length = strlen($tel2);
-        if($tel2length <= 12)
-        {
-        if ($n_rue < 10000000000)
-        { 
-        $ruelength = strlen($rue);
-        if ($ruelength <= 255)
-        {
-        $villelength = strlen($ville);
-        if ($villelength <= 255) 
-        {
-        if ($mdp == $mdp2) 
-        {
-            insertutilisateur($bdd, $nom, $prenom, $mail, $n_rue, $rue, $ville, $code_postal, $identifiant, $mdp, $tel1, $tel2);
-            $erreur = "Votre compte a bien été créé ! <a href= \"connexion.php\">Connexion</a>"; 
-        }
-        else{
-            $erreur ="Les mots de passes ne correspondent pas !";
-        }
-
-        }
-        else{
-            $erreur = "Le nom de la ville ne doit pas dépasser 255 caractères !";
-        }
-
-        }
-        else{
-            $erreur = "Le nom de la rue ne doit pas dépasser 255 caractères !";
-        }
-
-        }
-        else{
-            $erreur = "Le numéro de rue doit contenir au maximum 10 chiffres !";
-        }
-
-        }
-        else{
-            $erreur = "Le numéro de téléphone 2 doit contenir au maximum 12 chiffres !";
-        }
-            
-        }
-        else{
-            $erreur = "Le numéro de téléphone 1 doit contenir au maximum 12 chiffres !";
-        }
-
-        }
-        else{
-            $erreur ="Votre adresse email ne correspond pas !";
-        }
-            
-        }
-        else{
-            $erreur = "L'identifiant ne doit pas dépasser 255 caractères !";
-        }
-
-        }
-        else{
-            $erreur = "Cette identifiant existe déjà, veuillez en saisir un nouveau !";
-        }
-        }
-        else{
-            $erreur = "Le prénom ne doit pas dépasser 255 caractères !";
-        }
-        
-        }
-        else{
-            $erreur = "Le nom ne doit pas dépasser 255 caractères !";
-        }
-
-        }
-        else{
-            $erreur = "Veuillez remplir tous les champs !";
-        }
-
-    } 
-
-
+        //{ 
     if (isset($_POST['formparapieces'])) 
     {
+        
         $id = intval($_SESSION['id']);
         $nbr_salon = htmlspecialchars($_POST['nbr_salon']);
         $nbr_cuisine = htmlspecialchars($_POST['nbr_cuisine']);
@@ -208,22 +92,11 @@ ini_set('display_errors', 'On');
     }
 
 
-
-    $reponse = selectpiece($bdd,$_SESSION['id']);
-    $data = $reponse->fetchAll();
-    $nombre = sizeof($data);
-
-
-    if (isset($_POST["formparacapteurs"]))
+    /*if (isset($_POST["formparacapteurs"]))
     {
-        if(empty($_GET['id_piece']))
-            {
-                $id_piece = $data[0][0];
-            }
-        else
-            { 
-                $id_piece = $_GET['id_piece'];
-            }
+        $reponse= $bdd->prepare("SELECT * FROM pieces WHERE id_utilisateur = ?");
+        $reponse->execute(array($id));
+        $id_piece = intval($_SESSION['id_piece']);
         $nbr_volet = htmlspecialchars($_POST['nbr_volet']);
         $nbr_chauffage = htmlspecialchars($_POST['nbr_chauffage']);
         $nbr_light = htmlspecialchars($_POST['nbr_light']);
@@ -236,14 +109,12 @@ ini_set('display_errors', 'On');
             if ($i == 1) 
             {
                 $capteur = "Volet";
-                $type = "volet";
             }
             else
             {
                 $capteur = "Volet ".$i."";
-                $type = "volet";
             }
-            insertcapteur($bdd, $id_piece, $capteur, $type);
+            insertcapteur($bdd, $id_piece, $capteur);
         }
 
         for ($i=1; $i <= $nbr_chauffage ; $i++) 
@@ -251,14 +122,12 @@ ini_set('display_errors', 'On');
             if ($i == 1) 
             {
                 $capteur = "Chauffage";
-                $type = "chauffage";
             }
             else
             {
                 $capteur = "Chauffage ".$i."";
-                $type = "chauffage";
             }
-            insertcapteur($bdd, $id_piece, $capteur, $type);
+            insertcapteur($bdd, $id_piece, $capteur);
         }
 
         for ($i=1; $i <= $nbr_light ; $i++) 
@@ -266,14 +135,12 @@ ini_set('display_errors', 'On');
             if ($i == 1) 
             {
                 $capteur = "Lumière";
-                $type = "light";
             }
             else
             {
                 $capteur = "Lumière ".$i."";
-                $type = "light";
             }
-            insertcapteur($bdd, $id_piece, $capteur, $type);
+            insertcapteur($bdd, $id_piece, $capteur);
         }
 
         for ($i=1; $i <= $nbr_baro ; $i++) 
@@ -281,14 +148,12 @@ ini_set('display_errors', 'On');
             if ($i == 1) 
             {
                 $capteur = "Barométre";
-                $type = "baro";
             }
             else
             {
                 $capteur = "Barométre ".$i."";
-                $type = "baro";
             }
-            insertcapteur($bdd, $id_piece, $capteur, $type);
+            insertcapteur($bdd, $id_piece, $capteur);
         }
 
         for ($i=1; $i <= $nbr_presence ; $i++) 
@@ -296,14 +161,12 @@ ini_set('display_errors', 'On');
             if ($i == 1) 
             {
                 $capteur = "Capteur de présence";
-                $type = "presence";
             }
             else
             {
                 $capteur = "Capteur de présence ".$i."";
-                $type = "presence";
             }
-            insertcapteur($bdd, $id_piece, $capteur, $type);
+            insertcapteur($bdd, $id_piece, $capteur);
         }
 
         for ($i=1; $i <= $nbr_camera ; $i++) 
@@ -311,16 +174,19 @@ ini_set('display_errors', 'On');
             if ($i == 1) 
             {
                 $capteur = "Caméra";
-                $type = "cam";
             }
             else
             {
                 $capteur = "Caméra ".$i."";
-                $type = "cam";
             }
-            insertcapteur($bdd, $id_piece, $capteur, $type);
+            insertcapteur($bdd, $id_piece, $capteur);
         }
-    }
+    }*/
+
+    $reponse = selectpiece($bdd,$_SESSION['id']);
+    $data = $reponse->fetchAll();
+    $nombre = sizeof($data);
+    $id_max = $nombre + $data[0][0];
 
 
     if (isset($_GET['cible'])) 
@@ -334,7 +200,8 @@ ini_set('display_errors', 'On');
                 include("vue/para_capteurs.php");
             }
             else
-            { 
+            {
+                
                 $indice = $_GET['indice'];
                 if($indice == $nombre -1)
                 {
@@ -346,21 +213,16 @@ ini_set('display_errors', 'On');
                     $id_piece ++;
                     $indice ++;
                     include("vue/para_capteurs.php");   
-                } 
+                }
+                
             }
+            
         }
-        elseif ($_GET['cible'] == 'page_capteur_commun') // OK
+        elseif ($_GET['cible'] == 'page_capteur_commun') 
         {
-            $id_piece = $_GET['id_piece'];
             include("vue/page_capteur_commun.php");
         }
-        elseif ($_GET['cible'] == 'page_capteur_specifique') // OK
-        {
-            $id_piece = $_GET['id_piece'];
-            $type = $_GET['type'];  
-            include("vue/page_capteur_specifique.php"); 
-        }
-        elseif ($_GET['cible'] == 'home') // HOME // OK
+        elseif ($_GET['cible'] == 'home') // HOME
         {
             include("vue/home.php");
         }
@@ -380,7 +242,7 @@ ini_set('display_errors', 'On');
         {
             include("#");
         }
-        elseif ($_GET['cible'] == 'edition_profil') // OK
+        elseif ($_GET['cible'] == 'edition_profil') 
         {
             include("vue/edition_profil.php");
         }
@@ -398,53 +260,28 @@ ini_set('display_errors', 'On');
         }
         elseif ($_GET['cible'] == 'lampes') // ASIDE
         {
-            include("vue/liste_capteur_lampe.php");
+            include("#");
         }
         elseif ($_GET['cible'] == 'chauffage') 
         {
-            include("vue/liste_capteur_chauffage.php");
+            include("#");
         }
         elseif ($_GET['cible'] == 'volets') 
         {
-            include("vue/liste_capteur_volet.php");
+            include("#");
         }
         elseif ($_GET['cible'] == 'alarme') 
         {
-            include("vue/liste_capteur_alarme.php");
+            include("#");
         }
-        elseif ($_GET['cible'] == 'cameras') 
+        elseif ($_GET['cible'] == 'caméras') 
         {
-            include("vue/liste_capteur_camera.php");
+            include("#");
         }
-
-        //ADMIN
-
-        elseif ($_GET['cible'] == "home_admin") //OK
-        {
-            include("vue/home_admin.php");
-        }
-        elseif ($_GET['cible'] == "inscription") // OK
-        {
-            include("vue/inscription.php");
-        }
-        elseif ($_GET['cible'] == "utilisateur") // OK
-        {
-            include("vue/gestion_utilisateur.php"); 
-        }
-        elseif ($_GET['cible'] == "confirme") // OK
-        {
-            $id_mbr = $_GET['confirme'];
-            include("vue/gestion_utilisateur.php");
-        }
-        elseif ($_GET['cible'] == "delete") // OK
-        {
-            $id_mbr = $_GET['delete'];
-            include("vue/gestion_utilisateur.php");
-        }
-        else if ($_GET['cible'] == "deconnexion") // OK
+        else if ($_GET['cible'] == "deconnexion")
         {
         // Détruit toutes les variables de session
-        //$_SESSION = array();
+        $_SESSION = array();
         if (isset($_COOKIE[session_name()])) 
         {
          setcookie(session_name(), '', time()-42000, '/');
@@ -454,5 +291,6 @@ ini_set('display_errors', 'On');
         }
 
     }  
+
  
 ?>
